@@ -52,4 +52,9 @@ public class EmpleadoTemporal extends Empleado {
 		return fechaFin;
 	}
 	
+	@Override
+	protected String getDescripcionDeRetenciones() {
+		return"AportesJubilatorios: 10% del sueldo bruto + 5 por cada hora extra"
+				+ "ObraSocial: 10% del sueldo bruto";
+	}
 }

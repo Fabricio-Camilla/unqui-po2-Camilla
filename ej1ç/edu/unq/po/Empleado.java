@@ -46,6 +46,8 @@ abstract class  Empleado {
 	public int getAnioNacimiento() {
 		return this.anioNacimiento;
 	}
+
+	protected abstract String getDescripcionDeRetenciones();
 	
 	
 	

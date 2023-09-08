@@ -21,6 +21,12 @@ public class EmpleadoPermanente extends Empleado{
 		return getObraSocial() + getAportesJubilatorios();
 	}
 	
+	@Override
+	protected String getDescripcionDeRetenciones() {
+		return"AportesJubilatorios: 15% del sueldo bruto"
+				+ "ObraSocial: 10% del sueldo bruto y 20$ por hijo";
+	}
+	
 	private int getAportesJubilatorios() {
 		return (int) (getSueldoBruto() * 0.15);
 	}

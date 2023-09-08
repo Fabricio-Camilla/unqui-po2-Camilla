@@ -2,6 +2,8 @@ package edu.unq.po;
 
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class Empresa {
@@ -9,19 +11,18 @@ public class Empresa {
 	private Integer cuit;
 	private String nombre;
 	private Set<Empleado> empleados;
-	
-	public Integer getCuit() {
-		return this.cuit;
-	}
+	private List<ReciboDeHaberes> recibos;
 			
-	public String getNombreEmpresa() {
-		return this.nombre;
-	}
-	
 	public Empresa (Integer cuit, String nombre) {
 		this.cuit   = cuit;
 		this.nombre = nombre;
 		this.empleados = new HashSet<Empleado>();
+		this.recibos = new LinkedList<ReciboDeHaberes>();
+	}
+	
+	public void liquidarSueldo(Empleado empleado) {
+		Liquidador liquidador1 = new Liquidador();
+		this.recibos.add(liquidador1.generarRecibo(empleado));
 	}
 	
 	public void contratarEmpleado(Empleado empleado) {
@@ -55,5 +56,18 @@ public class Empresa {
 		} 		
 		return montoTotal;
 	}
+	
+	public Integer getCuit() {
+		return this.cuit;
+	}
+			
+	public String getNombreEmpresa() {
+		return this.nombre;
+	}
+
+	public List<ReciboDeHaberes> getRecibos() {
+		return this.recibos;
+	}
+	
 		
 }
