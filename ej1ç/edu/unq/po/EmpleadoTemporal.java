@@ -17,7 +17,7 @@ public class EmpleadoTemporal extends Empleado {
 	
 	@Override
 	public int getSueldoBruto() {
-		return horasExtras() + getSueldoBasico() - getRetenciones(); 
+		return horasExtras() + getSueldoBasico(); 
 	}
 	
 	@Override
