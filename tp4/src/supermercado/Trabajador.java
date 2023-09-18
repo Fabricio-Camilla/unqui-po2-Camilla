@@ -30,6 +30,7 @@ public class Trabajador {
 		return totalIngresos;
 	}
 	
+		
 	public int getMontoImponible() {
 		int totalIngresos = 0;
 		for ( Ingreso ingreso : ingresosPercibidos ) {
