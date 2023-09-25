@@ -8,9 +8,10 @@ public class CreditoPersonal extends Credito{
 
 	
 	@Override
-	public Boolean esSolicitudAceptable() {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean esSolicitudAceptable(Cliente cliente) {
+		return (cliente.getSueldoAnual() > 15000) 
+						& 
+		(this.montoCuotaMensual() < (cliente.getSueldoNetoMensual() * 0.7));
 	}
 
 }

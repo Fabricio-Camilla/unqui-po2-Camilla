@@ -7,7 +7,7 @@ public abstract class Credito {
 	protected int cantidadDeCuotas;
 	
 
-	public abstract Boolean esSolicitudAceptable();
+	public abstract Boolean esSolicitudAceptable(Cliente cliente);
 	
 	public Double montoCuotaMensual() {
 		return this.montoSolicitado * this.cantidadDeCuotas;
@@ -19,4 +19,9 @@ public abstract class Credito {
 		this.montoSolicitado = montoSolicitado;
 		this.cantidadDeCuotas = cantidadDeCuotas;
 	}
+
+	public int getCantidadDeCuotas() {
+		return this.cantidadDeCuotas;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package banco;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
 
@@ -11,6 +12,7 @@ public class Cliente {
 	private Double sueldoNetoMensual;
 	private Banco  banco;
 	private Propiedad propiedad;
+	private List<Credito> creditos = new ArrayList<Credito>();
 	
 	
 	public Cliente(String nombre,String apellido,String direccion, int edad, Double sueldoNetoMensual, Banco banco
@@ -65,5 +67,10 @@ public class Cliente {
 
 	public Propiedad getPropiedades() {
 		return this.propiedad;
+	}
+
+
+	public void agregarCredito(Credito credito) {
+		this.creditos .add(credito);		
 	}
 }

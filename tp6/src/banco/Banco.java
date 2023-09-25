@@ -11,13 +11,24 @@ public class Banco implements SistemaInformatico{
 	
 	public void realizarCreditoHipotecarioPara(Cliente cliente, Double monto, Propiedad garantia,
 			int mesesCuota) {
-		// TODO Auto-generated method stub
+		
+		for (Credito credito1 : solicitudesDeCredito) {
+			if (credito1.esSolicitudAceptable(cliente)) {
+				cliente.agregarCredito(credito1);
+				this.agregarSolicitudesCredito(credito1);
+			}
+		}
 		
 	}
 	
 	public void realizarCreditoPersonalPara(Cliente cliente, Double monto, int mesesCuota) {
-		// TODO Auto-generated method stub
-		
+	
+		for (Credito credito1 : solicitudesDeCredito) {
+			if (credito1.esSolicitudAceptable(cliente)) {
+				cliente.agregarCredito(credito1);
+				this.agregarSolicitudesCredito(credito1);
+			}
+		}		
 	}
 	
 	
