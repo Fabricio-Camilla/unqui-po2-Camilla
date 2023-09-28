@@ -15,15 +15,14 @@ public class Cliente {
 	private List<Credito> creditos = new ArrayList<Credito>();
 	
 	
-	public Cliente(String nombre,String apellido,String direccion, int edad, Double sueldoNetoMensual, Banco banco
-			, Propiedad propiedad) {
+	public Cliente(String nombre,String apellido,String direccion, int edad, Double sueldoNetoMensual,Propiedad propiedad) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.edad = edad;
 		this.sueldoNetoMensual= sueldoNetoMensual;
-		this.banco = banco;
 		this.propiedad = propiedad;
+		this.banco = new Banco();
 	}
 	
 	
@@ -69,6 +68,9 @@ public class Cliente {
 		return this.propiedad;
 	}
 
+	public List<Credito> getCreditos() {
+		return this.creditos;
+	}
 
 	public void agregarCredito(Credito credito) {
 		this.creditos .add(credito);		

@@ -22,12 +22,11 @@ public class Banco implements SistemaInformatico{
 	}
 	
 	public void realizarCreditoPersonalPara(Cliente cliente, Double monto, int mesesCuota) {
-	
+		this.agregarSolicitudesCredito(new CreditoPersonal(cliente, monto,mesesCuota));
 		for (Credito credito1 : solicitudesDeCredito) {
 			if (credito1.esSolicitudAceptable(cliente)) {
 				cliente.agregarCredito(credito1);
-				this.agregarSolicitudesCredito(credito1);
-			}
+				}
 		}		
 	}
 	
