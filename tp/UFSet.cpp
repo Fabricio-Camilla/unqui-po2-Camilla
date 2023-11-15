@@ -38,8 +38,8 @@ ELEM_TYPE elemUFS(UFSet ufset) {
  * Esta operación puede ser optimizada con la técnica de compresión de camino.
  */
 UFSet findUFS(UFSet elem) {
-   UFSet padre = elem -> parent;
-   while( elem -> element != padre){
+   UFSet padre = elem;
+   while( elem -> element != elem -> parent){
       padre = elem -> parent;
    }
    return padre;
@@ -50,5 +50,9 @@ UFSet findUFS(UFSet elem) {
  * Esta operación puede ser optimizada con la técnica de unión por rango.
  */
 void unionUFS(UFSet ufset1, UFSet ufset2) {
-   // COMPLETAR
+   if(ufset1 -> parent < ufset2 -> parent){
+      ufset2-> parent = ufset1 -> parent;
+   }else if(ufset1 -> parent == ufset2 -> parent){
+      ufset2 -> parent = ufset1 -> parent;
+   }
 }
