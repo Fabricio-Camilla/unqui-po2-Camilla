@@ -38,7 +38,11 @@ ELEM_TYPE elemUFS(UFSet ufset) {
  * Esta operación puede ser optimizada con la técnica de compresión de camino.
  */
 UFSet findUFS(UFSet elem) {
-   // COMPLETAR
+   UFSet padre = elem -> parent;
+   while( elem -> element != padre){
+      padre = elem -> parent;
+   }
+   return padre;
 }
 
 /*
