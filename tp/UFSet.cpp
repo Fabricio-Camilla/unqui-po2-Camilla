@@ -49,12 +49,17 @@ ELEM_TYPE elemUFS(UFSet ufset) {
 
 UFSet findUFS(UFSet elem) {
    //  *sin optimizacion*
-  /* while( elem != elem -> parent){
+/* while( elem != elem -> parent){
       elem = elem -> parent;
    }
    return elem;
 */
-      
+/*   *recursivo*
+   if( elem != elem -> parent ){
+      elem = findUFS(elem -> parent);
+   }return elem;
+*/
+
    UFSet current = elem;
    while( current != current -> parent){
       current = current -> parent;              // current es el elemnto distinguido
@@ -75,14 +80,22 @@ UFSet findUFS(UFSet elem) {
  * Esta operación puede ser optimizada con la técnica de unión por rango.
  */
 void unionUFS(UFSet ufset1, UFSet ufset2) {
-   /* 
+/* 
    //*sin optimizacion*
    if(findUFS(ufset1)  < findUFS(ufset2)){
-      ufset2-> parent = findUFS(ufset1);
+      ufset2 -> parent = findUFS(ufset1);
    }else if(findUFS(ufset1) == findUFS(ufset2)){
       ufset2 -> parent = findUFS(ufset1);
    }
-   */
+*/
+/* *recursion*
+    if(findUFS(ufset1) < findUFS(ufset2)){
+      ufset2 -> parent = unionUFS(ufset2, findUFS(ufset1));
+    }else if (findUFS(ufset1) == findUFS(ufset2)){
+      ufset2 -> parent = unionUFS(ufset2, findUFS(ufset1));
+    }
+*/
+
 
    if (findUFS(ufset1) -> rank > findUFS(ufset2) -> rank){
       ufset2 -> parent = findUFS(ufset1);                      //el padre pasa a ser el elemento distinguido de mayor rank
@@ -90,7 +103,7 @@ void unionUFS(UFSet ufset1, UFSet ufset2) {
       ufset1 -> parent = findUFS(ufset2);                      //el padre pasa a ser el elemento distinguido de mayor rank
    }else{
       ufset1 -> parent = findUFS(ufset2);    // dado que no es menor ni mayor asumo que es el caso que es igual.
-      ufset2 -> rank ++;                  //chekear cual le cambia lo que cuelga para aumentar rank?
+      ufset2 -> rank ++;                  
    }
 }
 
