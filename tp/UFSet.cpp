@@ -85,12 +85,12 @@ void unionUFS(UFSet ufset1, UFSet ufset2) {
    */
 
    if (findUFS(ufset1) -> rank > findUFS(ufset2) -> rank){
-      ufset2 -> parent = findUFS(ufset1); 
+      ufset2 -> parent = findUFS(ufset1);                      //el padre pasa a ser el elemento distinguido de mayor rank
    }else if( findUFS(ufset1) -> rank < findUFS(ufset2) -> rank ){
-      ufset1 -> parent = findUFS(ufset2);     
+      ufset1 -> parent = findUFS(ufset2);                      //el padre pasa a ser el elemento distinguido de mayor rank
    }else{
-      ufset1 -> parent = findUFS(ufset2);
-      ufset2 -> rank ++;
+      ufset1 -> parent = findUFS(ufset2);    // dado que no es menor ni mayor asumo que es el caso que es igual.
+      ufset2 -> rank ++;                  //chekear cual le cambia lo que cuelga para aumentar rank?
    }
 }
 
