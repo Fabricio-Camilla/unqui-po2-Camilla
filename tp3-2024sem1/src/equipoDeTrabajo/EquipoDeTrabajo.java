@@ -20,8 +20,8 @@ public class EquipoDeTrabajo {
 		return this.integrantes;
 	}
 	
-	public OptionalDouble promedioDeEdadDeIntegrantes() {
-		return this.getIntegrantes().stream().mapToDouble(p -> p.edad()).average();
+	public Double promedioDeEdadDeIntegrantes() {
+		return this.getIntegrantes().stream().mapToDouble(p -> p.edad()).average().getAsDouble();
 	}
 
 	public EquipoDeTrabajo(String nombre) {
