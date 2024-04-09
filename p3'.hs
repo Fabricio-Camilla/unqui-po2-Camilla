@@ -80,7 +80,7 @@ compose f = (\g -> (\x -> f (g x)))
 
 compose f g =  (\x -> f (g x))
 -}
-compose :: (a->b) -> (c->d) -> b -> c
+compose :: (a -> b) -> (c -> a) -> c -> b
 compose f g x = f (g x)
 -----------------------------------------------------------------------
 
