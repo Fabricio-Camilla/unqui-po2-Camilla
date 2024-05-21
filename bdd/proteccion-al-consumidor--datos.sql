@@ -1,6 +1,38 @@
 ---------------- create's----------------------
+create table producto (
+    pid INT Primary Key,
+    descripcion VARCHAR(70),
+    tipo VARCHAR(40),
+    contenido VARCHAR(40)
 
-#PARA ESTE EJERCICIO NO SE PROVEEN LAS CREACIONES DE LAS TABLAS.
+);
+create table tipo(
+    tipo VARCHAR(40) Primary Key, 
+    descripcion VARCHAR(100)
+);
+create table comercio (
+    idcomercio INT Primary Key,
+    nombre VARCHAR(100),
+    direccion VARCHAR(250), 
+    barrio VARCHAR(50), 
+    zona VARCHAR(60)
+);
+create table precio (
+    pid INT, 
+    idcomercio INT,
+    fecharegistro DATE, 
+    precio DECIMAL(10,2),
+    PRIMARY KEY (pid, idcomercio, fecharegistro),
+    CONSTRAINT fkprecio FOREIGN KEY (pid) REFERENCES producto(pid),
+    CONSTRAINT fkcomercio FOREIGN KEY (idcomercio) REFERENCES comercio(idcomercio)
+);
+
+--a) Actualizar la dirección del comercio número 42 con el valor “Balcarce 50”
+UPDATE comercio
+SET direccion = 'Balcarce 50'
+WHERE idcomercio = 42;
+
+
 
 ---------------- productos ----------------------
 
@@ -74,7 +106,7 @@ VALUES
 
 -- -------------- comercios ----------------------
 
-INSERT INTO comercio (comercio,nombre,direccion,barrio,zona)
+INSERT INTO comercio (idcomercio,nombre,direccion,barrio,zona)
 VALUES
 (1,'Abbot','Montevideo 82 Av.','Duluth','MN'),
 (2,'Denton','34715 Ac Road','San Telmo','Vienna'),
@@ -87,7 +119,7 @@ VALUES
 (9,'Shad','3910 Molestie St.','Akron','OH'),
 (10,'Howard','704 Odio. Ave','Constitucion','zaraza');
 
-INSERT INTO comercio (comercio,nombre,direccion,barrio,zona)
+INSERT INTO comercio (idcomercio,nombre,direccion,barrio,zona)
 VALUES
 (42,'Abbot','Montevideo 82 Av.','Duluth','MN'),
 (12,'Luis y Hnos','34715 Ac Road','San Telmo','Vienna'),
@@ -103,7 +135,7 @@ VALUES
 -- -------------- precios ----------------------
 
 INSERT INTO precio
-(pid,comercio,fecharegistro,precio)
+(pid,idcomercio,fecharegistro,precio)
 VALUES
 (110,1,'2013-03-02','6.73'),
 (120,2,'2015-05-29','13.13'),
@@ -127,7 +159,7 @@ VALUES
 (100,10,'2014-06-12','10.80');
 
 INSERT INTO precio
-(pid,comercio,fecharegistro,precio)
+(pid,idcomercio,fecharegistro,precio)
 VALUES
 (130,3,'2013-05-04','11.99'),
 (130,5,'2015-03-10','13.64'),
@@ -148,7 +180,7 @@ VALUES
 (200,20,'2015-05-24-','14.16');
 
 
-INSERT INTO precio (pid,comercio,fecharegistro,precio)
+INSERT INTO precio (pid,idcomercio,fecharegistro,precio)
 VALUES
 (210,4,'2012-01-04','10.10'),
 (220,14,'2014-11-12','10.10'),
@@ -162,7 +194,7 @@ VALUES
 (300,4,'2015-10-10','9.64');
 
 INSERT INTO precio
-(pid,comercio,fecharegistro,precio)
+(pid,idcomercio,fecharegistro,precio)
 VALUES
 (310,2,'2014-02-09','8.86'),
 (320,8,'2011-01-05','8.90'),
