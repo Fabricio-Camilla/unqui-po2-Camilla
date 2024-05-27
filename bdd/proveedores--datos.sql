@@ -1,6 +1,39 @@
 
 #PARA ESTE EJERCICIO NO SE PROVEEN LAS CREACIONES DE LAS TABLAS.
 
+CREATE TABLE proveedores(
+	idprov varchar(20) PRIMARY KEY,
+	provnombre varchar(20),
+	categoria int,
+	ciudad varchar(20)
+);
+
+CREATE TABLE componentes(
+	idcomp varchar(20), 
+	compnombre varchar(20), 
+	color varchar(20), 
+	peso int, 
+	ciudad varchar(20),
+	PRIMARY KEY (idcomp, compnombre)
+);
+
+CREATE TABLE articulos(
+	idart varchar(20) PRIMARY KEY, 
+	artnombre varchar(20), 
+	ciudad varchar(20)
+);
+
+CREATE TABLE envios(
+	idprov varchar(20), 
+	idcomp varchar(20), 
+	idart varchar(20), 
+	cantidad int,
+	PRIMARY KEY(idprov,idcomp),
+	CONSTRAINT fk_prov FOREIGN KEY (idprov) REFERENCES proveedores(idprov),
+	CONSTRAINT fk_comp FOREIGN KEY (idcomp) REFERENCES componentes(idcomp),
+	CONSTRAINT fk_art FOREIGN KEY (idart) REFERENCES articulos(idart)
+);
+	
 INSERT INTO proveedores
 	(idprov, provnombre, categoria, ciudad)
 VALUES
